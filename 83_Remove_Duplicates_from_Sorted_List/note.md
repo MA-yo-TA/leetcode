@@ -22,8 +22,8 @@ class Solution:
         curr = head
         dummy_head = ListNode()
         non_dup_node = dummy_head
-        while curr and curr.next:
-            if curr.next.val == curr.val:
+        while curr:
+            if  curr.next and curr.next.val == curr.val:
                 curr = curr.next
                 continue
             non_dup_node.next = ListNode(val=curr.val)
