@@ -62,12 +62,12 @@ class Solution:
 
 （ 連結リストを逆向きに繋ぎ変えて、と言われたら普通はまず先にこれを思いつく気がしており、<https://1kohei1.com/leetcode/> を見てカテゴリーごとに問題を解いていることで思考が記載されているカテゴリーに引っ張られ過ぎているかもしれないと思った ）
 
-### 他の方のコードを読んで
-
 - <https://github.com/huyfififi/coding-challenges/pull/18/changes>
-  - 変数名を深く考えずに previous_node/current_node/next_node にしたけど、確かにもっとわかりやすい命名はあるかもしれない
+  - ↑を書く時に変数名を深く考えずに previous_node/current_node/next_node にしたけど、確かにもっとわかりやすい命名はあるかもしれない
 
 - <https://github.com/t0hsumi/leetcode/pull/7/changes#diff-f1530fc1072ee1f0b7de99a2e5236992c72355da69982c8ca516fcfba7c57927R47-R48>
-  - next_node の初期化をループの前にやらないで1回目のループでやれば、実質の判定を while の条件式にできる（if がいらなくなる）
+  - next_node の初期化をループの前にやらないで1回目のループでやれば、実質の判定を while の条件式にできる（if がいらなくなる）。そもそも next_node は node を繋ぎかえる時に次に見るやつの情報を対比させておく一時変数なのでループの外で初期化しない方が自然かも。
 
 ## step3（10分以内にさっとかける * 3回）
+
+note の文言をちょっと修正
