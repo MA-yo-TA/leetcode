@@ -1,6 +1,6 @@
 # 206. Reverse Linked List
 
-<https://leetcode.com/problems/reverse-linked-list/description/>
+<https://leetcode.com/problems/reverse-linked-list/>
 
 ## step1（まず通す）
 
