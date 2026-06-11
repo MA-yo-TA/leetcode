@@ -26,3 +26,7 @@
 ## step3（10分以内にさっとかける * 3回）
 
 書いていて気づいたが、step2.py だと括弧の種類が増減した時に opens/closes/close_to_open の3つを書き換えないといけないので、opens/closes を close_to_open.values() close_to_open.keys() にした方がいいかも。ただしその場合でも、読み書きする時に .keys(), .values() だとどっちがどっちか混乱するので、変数に格納しといた方が読みやすそう。
+
+## step4
+
+いただいたコメントに沿って書き直してみる
