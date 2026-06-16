@@ -46,6 +46,9 @@
       - いろんな例を考えてるがならなそう
       - 証明: `num[answer1] + num[answer2] (answer1 < answer2) = target` になるとき、`i < answer1 < answer2 < j` に対しての `num[i] + num[j]` は target より大きいか小さいかわからないけど、`num[i] + num[answer2] < target < num[answer1] + num[j]` なのでどちらかが answer に到達した時点であとはもう片方が答えに近づくだけであり行きすぎることはない。
       - 指滑らせて棒の重心探すやつみたい
+- 他にも読んだコード
+  - <https://github.com/naoto-iwase/leetcode/pull/11/changes>
+  - <https://github.com/shintaro1993/arai60/pull/15/changes>
 
 ## step3（10分以内にさっとかける * 3回）
 
