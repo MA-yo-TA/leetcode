@@ -35,7 +35,7 @@ str.index()の挙動は以下なので、該当するインデックスを探す
 
 例えば、`"aaaaaaa...aaaab"` みたいな、文字種数は少ないが答えが出てくるのが最後の方というケースではかなり速くなるはず。
 
-実験してみた（benchmark.py）
+### 実験してみた（benchmark.py）
 
 こう見ると、
 
@@ -45,11 +45,10 @@ str.index()の挙動は以下なので、該当するインデックスを探す
 注意：
 
 - 表示されている時間はすべて REPEAT 回分の合計
-- 実際の1回の呼び出しはインタープリタのオーバーヘッドがあるのでもっとかかるはず
+- 実際の1回の呼び出しはインタープリタのオーバーヘッドがあるのでもっとかかる & 実験で見えている差は薄まる
 
 ```txt
-> cd /Users/maedayouta/github-private/leetcode/387-First-Unique-Character-in-a-String && python benchmark.py
-
+> python benchmark.py
 case                                  step1 (ms)   step2 (ms)   winner
 -----------------------------------------------------------------------
 'leetcode'                                 0.740        0.519    step2
@@ -74,5 +73,15 @@ case                                  step1 (ms)   step2 (ms)   winner
     s.index scan (step2)  :  156.023 ms  (scan only: +1.125 ms)
     scan ratio (py/idx)   :     0.37x
 ```
+
+### 他の人のコードを読む
+
+- <https://github.com/naoto-iwase/leetcode/pull/15/changes>
+  - インデックスも記録しておけばさがしにいかなくていい、というやり方
+- <https://github.com/t0hsumi/leetcode/pull/15#discussion_r1930362913>
+  - 「1度しか出てこない」を「find （左から探索した時に最初に見つかる index） と rfind （右から〃）が一致する」と言い換えたコード
+    - 計算量としては2乗になるが、find, rfind が c で実装されているので文字列の長さがそれなりに短ければ結構速そう（index が速いのと同じような理由）
+
+これも書いてみる
 
 ## step3（10分以内にさっとかける * 3回）
