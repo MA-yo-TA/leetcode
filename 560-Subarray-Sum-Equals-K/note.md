@@ -36,4 +36,15 @@ n が 2 * 10 ^ 4 なので `n log n ~ 30 * 10 ^ 5 で` 数百 ms くらいには
 
 ### 他の方のコードを見る
 
+- <https://github.com/shintaro1993/arai60/pull/20/changes>
+  - 累積和を計算するのと一緒に差が k になるものを探せば、その時点で和を計算したものより短い prefix array しかないので長さの比較が不要になり O(n) にできる。
+  - こうすると、prefix array の末尾のインデックスを覚えている必要もなくなるので単にカウントでよくなる
+  - `defaultdict` の初期値は初期化の時に引数で渡せる
+  - `itertools.accumulate()` という関数があるようだ
+    - これに限らず [itertools](https://docs.python.org/ja/3/library/itertools.html)は非常に便利そう
+- <https://github.com/shintaro1993/arai60/pull/20/changes>
+  - ↑と同じようにされている
+  - 自分も for ループの先頭でハッシュマップをインクリメントするよりは、リスト先頭の直前に空の prefix array を想定して初期化する方が好き
+- prefix sum という命名が多め？に感じる
+
 ## step3（10分以内にさっとかける * 3回）
