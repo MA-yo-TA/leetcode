@@ -10,6 +10,10 @@ class NodeType(IntEnum):
 
 class Solution:
     def maxAreaOfIsland(self, grid: list[list[NodeType]]) -> int:
+        num_rows = len(grid)
+        num_columns = len(grid[0])
+        seen_nodes: set[tuple[int, int]] = set()
+
         def get_area_of_island(row: int, column: int) -> int:
             nodes_to_see = deque([(row, column)])
             seen_nodes.add((row, column))
@@ -34,9 +38,6 @@ class Solution:
 
             return area
 
-        num_rows = len(grid)
-        num_columns = len(grid[0])
-        seen_nodes: set[tuple[int, int]] = set()
         max_area_of_island = 0
         for row, column in product(range(num_rows), range(num_columns)):
             if (row, column) in seen_nodes:

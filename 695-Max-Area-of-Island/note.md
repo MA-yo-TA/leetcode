@@ -24,3 +24,6 @@
 enum を使う場合、int として比較したいので [IntEnum](https://docs.python.org/ja/3/library/enum.html#enum.IntEnum) を使う。そうすると、作成する maxAreaOfIsland の引数 grid の型も `list[list[NodeType]]` が良さそう。
 
 ## step3（10分以内にさっとかける * 3回）
+
+- <https://github.com/MA-yo-TA/leetcode/pull/18#discussion_r3487683841>
+  - やってる最中に一つ前の問題のレビューをいただいたので反映させた
