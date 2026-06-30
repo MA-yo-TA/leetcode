@@ -17,9 +17,8 @@ class Solution:
 
         return adjacency_list
 
-    def find_shortest_transformation_length(
-        self, adjacency_list: dict[str, list[str]], begin_word: str, end_word: str
-    ) -> int:
+    def ladderLength(self, begin_word: str, end_word: str, word_list: list[str]) -> int:
+        adjacency_list = self.construct_adjacency_list(begin_word, word_list)
         words_to_see = deque([(begin_word, 1)])
         seen_words = set([begin_word])
         while words_to_see:
@@ -33,9 +32,3 @@ class Solution:
                 seen_words.add(adjacent)
 
         return 0
-
-    def ladderLength(self, begin_word: str, end_word: str, word_list: list[str]) -> int:
-        adjacency_list = self.construct_adjacency_list(begin_word, word_list)
-        return self.find_shortest_transformation_length(
-            adjacency_list, begin_word, end_word
-        )
