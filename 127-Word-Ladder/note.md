@@ -96,3 +96,5 @@ connected-grid-1500           6        101.432       11.970    step2
     - https://cs.stackexchange.com/questions/93467/data-structure-or-algorithm-for-quickly-finding-differences-between-strings
 
 ## step3（10分以内にさっとかける \* 3回）
+
+関数に分割しすぎていたので自分でちょうど良いと思えるくらいにした
