@@ -6,7 +6,8 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).parent
-SOLUTION_FILES = ("step1-1.py", "step1-2.py", "step1-3.py")
+STEP1_SOLUTION_FILES = ("step1-1.py", "step1-2.py", "step1-3.py")
+STEP2_COMPARE_FILES = ("step1-3.py", "step2.py")
 REPEAT = 5
 
 
@@ -107,7 +108,9 @@ def main() -> None:
         begin_word, end_word, word_list = connected_grid(count)
         cases.append((f"connected-grid-{count}", begin_word, end_word, word_list, None))
 
-    solutions = {filename: load_solution(filename) for filename in SOLUTION_FILES}
+    step1_solutions = {
+        filename: load_solution(filename) for filename in STEP1_SOLUTION_FILES
+    }
 
     print(f"REPEAT={REPEAT}")
     print(
@@ -118,7 +121,7 @@ def main() -> None:
     for name, begin_word, end_word, word_list, expected in cases:
         results = {}
         durations = {}
-        for filename, solution in solutions.items():
+        for filename, solution in step1_solutions.items():
             result = solution.ladderLength(begin_word, end_word, word_list.copy())
             if expected is not None:
                 assert result == expected, (
@@ -138,6 +141,42 @@ def main() -> None:
             f"{durations['step1-1.py']:>14.3f} "
             f"{durations['step1-2.py']:>14.3f} "
             f"{durations['step1-3.py']:>14.3f} "
+            f"{winner.removesuffix('.py'):>8}"
+        )
+
+    step2_solutions = {
+        filename: load_solution(filename) for filename in STEP2_COMPARE_FILES
+    }
+
+    print()
+    print("step1-3.py vs step2.py")
+    print(
+        f"{'case':<22} {'expected':>8} {'step1-3 (ms)':>14} "
+        f"{'step2 (ms)':>12} {'winner':>8}"
+    )
+    print("-" * 70)
+    for name, begin_word, end_word, word_list, expected in cases:
+        results = {}
+        durations = {}
+        for filename, solution in step2_solutions.items():
+            result = solution.ladderLength(begin_word, end_word, word_list.copy())
+            if expected is not None:
+                assert result == expected, (
+                    f"{filename}: got {result}, expected {expected} in {name}"
+                )
+            results[filename] = result
+            durations[filename] = bench(solution, begin_word, end_word, word_list) * 1000
+
+        if expected is None:
+            result_values = set(results.values())
+            assert len(result_values) == 1, f"answer mismatch in {name}: {results}"
+            expected = result_values.pop()
+
+        winner = min(durations, key=durations.get)
+        print(
+            f"{name:<22} {expected:>8} "
+            f"{durations['step1-3.py']:>14.3f} "
+            f"{durations['step2.py']:>12.3f} "
             f"{winner.removesuffix('.py'):>8}"
         )
 
