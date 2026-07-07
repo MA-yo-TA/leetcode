@@ -4,7 +4,7 @@ https://leetcode.com/problems/merge-two-binary-trees/description/
 
 ## step1（まず通す）
 
-再帰で書くのがぱっと見わかりやすそうだったのでまずはそれで書く。
+再帰で書くのがぱっと見わかりやすそうだったのでまずはそれで書く。再帰でスタックする数も高々木の高さなので問題ないはず。
 
 ## step2（整形＆他の人のコードを読む）
 
@@ -18,4 +18,4 @@ https://leetcode.com/problems/merge-two-binary-trees/description/
 
 ### 他の人はどう書いているか
 
-## step3（10分以内にさっとかける * 3回）
+## step3（10分以内にさっとかける \* 3回）
