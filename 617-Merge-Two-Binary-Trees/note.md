@@ -35,3 +35,9 @@ https://leetcode.com/problems/merge-two-binary-trees/description/
 ## step3（10分以内にさっとかける \* 3回）
 
 破壊しないで書く。
+
+## step4
+
+再帰→スタックの変換。
+
+tree1, tree2 の left, right をスタックに詰めた時点で merged_node もデフォルトの TreeNode を受け皿として一緒に詰めておかないと親と子を紐づけられない、というのを理解するのにちょっと時間がかかった。
