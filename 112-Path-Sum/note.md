@@ -16,6 +16,37 @@ https://leetcode.com/problems/path-sum/
 - https://github.com/naoto-iwase/leetcode/pull/29#discussion_r2455081026
   - 「もし葉でtargetSumになるような経路を返却するとしたらどうでしょうか？設問としてはTrue/Falseなのですが、単純にTrue/Falseを得るよりはpathを実際に知るほうが意味があるのかなと思ったので...自分が面接だったら質問しそうです。」
     - 葉から根へ向かうのは親を辿っていけば一本道でたどり着くので、探索しながら各ノードの親を覚えておく `node_to_parent: dict[TreeNode, TreeNode` 辞書を作って、葉から順番に辿っていけば良さそう。
+    - 全部のパスを返す必要があるなら、見つかった時点での return をやめて全ノードを探索すれば良い。
+    - パスを一つだけ見つければ良いという条件で再帰で書くなら↓のようになるだろうか。空リストより None が良いかもしれないのと、パスを探すならパスの存在自体が T/F の代わりになるので bool を返す必要はなさそう。全部のパスを返す場合は、返すのがパスのリスト = ノードのリストのリストになってだいぶ煩雑な気がする。
+
+```python
+class Solution:
+    def hasPathSum(
+        self, root: Optional[TreeNode], target_sum: int
+    ) -> tuple[bool, list[TreeNode]]:
+        if root is None:
+            return False, []
+
+        if root.left is None and root.right is None:
+            if root.val == target_sum:
+                return True, [root]
+            else:
+                return False, []
+
+        child_target_sum = target_sum - root.val
+        left_has_path, path = self.hasPathSum(root.left, child_target_sum)
+        if left_has_path:
+            path.append(root)
+            return True, path
+
+        right_has_path, path = self.hasPathSum(root.right, child_target_sum)
+        if right_has_path:
+            path.append(root)
+            return True, path
+
+        return False, []
+```
+
 - https://discord.com/channels/1084280443945353267/1225849404037009609/1258455843226255361
   - 「引き算先にしちゃって、...のほうが素直ではないでしょうか。」
     - 確かにそう。
