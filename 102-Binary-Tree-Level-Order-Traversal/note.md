@@ -24,3 +24,5 @@ https://leetcode.com/problems/binary-tree-level-order-traversal/
   - 変数名 traversal はちょっと変な気がするので、この方が使っている `values_by_level` とか他の方が書いていたような `level_by_level` がいいかもしれない
 
 ## step3（10分以内にさっとかける \* 3回）
+
+https://github.com/MA-yo-TA/leetcode/pull/22/changes#diff-dce60424cb6c268dbcb886bdef92379cfa43ce43bf656d9733daae9cc937f12dR71 で書いてあることと逆をやっているが、今回は values があるため、next_layer も含めてループ内の一時変数という感覚になった。まだ自分の好みが定まってないように感じる。
