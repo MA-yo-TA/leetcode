@@ -21,3 +21,6 @@ https://github.com/h-masder/Arai60/pull/37
 外側ゼロ埋めをやってみる。
 
 ## step3（10分以内にさっとかける * 3回）
+
+- キャメルケースをやめ obstacle_grid に
+- 1 は OBSTACLE という定数でおいて意味がわかりやすいように
